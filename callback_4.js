@@ -9,7 +9,7 @@ const carrinho = [
         nome: 'Lapis', qtde: 13, preco: 11.00
     },
     {
-        nome: 'abajyr', qtde: 13, preco: 4.00
+        nome: 'abajur', qtde: 13, preco: 4.00
     },
     {
         nome: 'antena', qtde: 13, preco: 1.00
@@ -37,20 +37,21 @@ const carrinho = [
 // }
 
 Array.prototype.meuFilter = function(fn){
-    const novoArray = []
+    
+    let novoArray = []
 
     for(let i = 0; i < this.length; i++) {
             if(fn(this[i], i, this)) { 
                 novoArray.push(this[i])
             }
-
     }
+    return novoArray
 }
 
 const qtdeMaiorQueZero = item => item.preco < 4.99
 
 const getNome = item => item.nome
 
-const total = carrinho.filter(qtdeMaiorQueZero).map(getNome)
+const total = carrinho.meuFilter(qtdeMaiorQueZero).map(getNome)
 
 console.log(total);
